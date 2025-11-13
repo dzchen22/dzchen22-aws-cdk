@@ -92,14 +92,6 @@ new HostedConfiguration(stack, 'MyHostedConfigFromYaml', {
   deploymentStrategy,
 });
 
-// hosted config with typeAsString
-new HostedConfiguration(stack, 'MyHostedConfigWithTypeAsString', {
-  application: appConfigApp,
-  name: 'TestConfigWithTypeAsString',
-  typeAsString: 'AWS.AppConfig.FeatureFlags',
-  content: ConfigurationContent.fromInlineText('This is my configuration content with typeAsString.'),
-});
-
 // ssm paramter as configuration source
 const func = new Function(stack, 'MyValidatorFunction', {
   runtime: Runtime.PYTHON_3_8,
