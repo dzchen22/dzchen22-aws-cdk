@@ -226,6 +226,20 @@ new appconfig.HostedConfiguration(this, 'MyHostedConfiguration', {
 });
 ```
 
+You can also specify the configuration type as a string using `typeAsString`. This is useful when you need to use configuration types that are not available in the `ConfigurationType` enum:
+
+```ts
+declare const application: appconfig.Application;
+
+new appconfig.HostedConfiguration(this, 'MyHostedConfiguration', {
+  application,
+  content: appconfig.ConfigurationContent.fromInlineText('This is my configuration content.'),
+  typeAsString: 'AWS.AppConfig.FeatureFlags',
+});
+```
+
+The `typeAsString` property takes precedence over the `type` property when both are specified.
+
 When you create a configuration and configuration profile, you can specify up to two validators. A validator ensures that your
 configuration data is syntactically and semantically correct. You can create validators in either JSON Schema or as an AWS
 Lambda function.
